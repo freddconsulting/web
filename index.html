@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freddy Arevalo - Project & Product Strategist</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': {
+                            'DEFAULT': '#7C3AED', // Violet 600
+                            'hover': '#6D28D9'  // Violet 700
+                        },
+                        'secondary': '#1F2937', // Gray 800
+                        'light-bg': '#F9FAFB', // Gray 50
+                        'dark-bg': '#111827', // Gray 900
+                        'accent': '#10B981', // Emerald 500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animaciones suaves */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .fade-in-section {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(20px);
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Carrusel de Logos */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-200px * 7)); }
+        }
+        .scroller-inner {
+            display: flex;
+            width: fit-content;
+            animation: scroll 40s linear infinite;
+        }
+        .logo-item {
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+        }
+        .logo-item img {
+            max-height: 48px;
+            width: auto;
+            object-fit: contain; /* Evita que los logos se estiren */
+        }
+
+        /* Estilos para el nuevo diagrama de flujo */
+        .flow-arrow {
+            height: 30px;
+            width: 2px;
+            background-color: #e5e7eb; /* gray-200 */
+            margin: 0.75rem auto;
+            position: relative;
+        }
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: -4px;
+            width: 10px;
+            height: 10px;
+            border-bottom: 2px solid #e5e7eb;
+            border-right: 2px solid #e5e7eb;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-700 antialiased" style="font-family: 'Inter', sans-serif;">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-black text-secondary tracking-tighter">
+                Freddy Arevalo
+            </a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#services" class="text-gray-600 hover:text-primary transition font-medium">Services</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-primary transition font-medium">Portfolio</a>
+                <a href="#contact" class="bg-primary text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-primary-hover transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#services" class="block py-2 text-gray-600 hover:text-primary transition">Services</a>
+            <a href="#portfolio" class="block py-2 text-gray-600 hover:text-primary transition">Portfolio</a>
+            <a href="#contact" class="block mt-2 bg-primary text-white text-center px-4 py-2 rounded-md hover:bg-primary-hover transition">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-24 md:py-32 overflow-hidden">
+             <div class="absolute inset-0 -z-10 bg-light-bg" style="background-image: radial-gradient(circle at top right, rgba(124, 58, 237, 0.1), transparent 40%);"></div>
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <img src="https://i.imgur.com/H5MDRoz.jpeg" alt="Photo of Freddy Arevalo" class="w-36 h-36 rounded-full mx-auto mb-6 border-4 border-white shadow-2xl object-cover">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-secondary tracking-tighter leading-tight mb-4 animate-fadeInUp">Intelligent Project Management That Delivers Results</h1>
+                    <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 animate-fadeInUp" style="animation-delay: 0.2s;">I help Fintech companies, established banks, and ambitious entrepreneurs launch successful digital products through an innovative fusion of Agile management and AI-driven strategies.</p>
+                    
+                    <!-- Credenciales en Hero -->
+                    <div class="flex justify-center items-center gap-4 mb-10 animate-fadeInUp" style="animation-delay: 0.3s;">
+                        <span class="text-sm font-semibold text-gray-500">Verified by:</span>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Certified" class="h-6" title="Google Project Management Certified">
+                        <img src="https://i.imgur.com/j7Zjv28.png" alt="Scrum Certified" class="h-8" title="Scrum Foundation Professional Certificate">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM Certified" class="h-8" title="IBM Data Analyst">
+                    </div>
+
+                    <a href="#contact" class="bg-primary text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-primary-hover transition-transform duration-300 transform hover:scale-105 shadow-lg animate-fadeInUp" style="animation-delay: 0.4s;">Request a Free Consultation</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Section -->
+        <div class="py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <p class="text-center text-sm font-semibold text-gray-500 tracking-wider uppercase">Trusted by Industry Leaders & Innovators</p>
+                <div class="relative mt-6 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
+                    <div class="scroller-inner">
+                        <div class="logo-item"><img src="https://i.imgur.com/G5RePtm.png" alt="Logo of BNC"></div>
+                        <div class="logo-item"><img src="https://i.imgur.com/q72EIUX.png" alt="Logo of UnpluggedCorp"></div>
+                        <div class="logo-item"><img src="https://i.imgur.com/T1dCLtR.png" alt="Logo of CAF"></div>
+                        <div class="logo-item"><img src="https://i.imgur.com/mcVHVeh.png" alt="Logo of Wingsoft Labs"></div>
+                        <div class="logo-item"><img src="https://i.imgur.com/cDTCR7e.png" alt="Logo of Creska Global"></div>
+                        <div class="logo-item"><img src="https://i.imgur.com/OigCANv.png" alt="Logo of Humanitas"></div>
+                        <!-- Duplicado para el efecto de bucle infinito -->
+                        <div class="logo-item"><img src="https://i.imgur.com/G5RePtm.png" alt="Logo of BNC"></div>
+                        <div class="logo-item"><img src="https://i.imgur.com/q72EIUX.png" alt="Logo of UnpluggedCorp"></div>
+                        <div class="logo-item"><img src="https://i.imgur.com/T1dCLtR.png" alt="Logo of CAF"></div>
+                        <div class="logo-item"><img src="https://i.imgur.com/mcVHVeh.png" alt="Logo of Wingsoft Labs"></div>
+                        <div class="logo-item"><img src="https://i.imgur.com/cDTCR7e.png" alt="Logo of Creska Global"></div>
+                        <div class="logo-item"><img src="https://i.imgur.com/OigCANv.png" alt="Logo of Humanitas"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 md:py-28 bg-light-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-secondary tracking-tighter">From Strategy to Execution</h2>
+                    <p class="text-lg text-gray-600 mt-4">I provide an end-to-end approach that covers the entire product lifecycle, ensuring each phase is managed with precision and foresight.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-primary hover:shadow-2xl transition-all duration-300 fade-in-section hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold text-secondary mb-3">Product Strategy & Design</h3>
+                        <p class="text-gray-600">I analyze market needs and define the product vision. I design the technical architecture, user flows, and development roadmap to ensure we build the right product, correctly.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-primary hover:shadow-2xl transition-all duration-300 fade-in-section hover:-translate-y-2" style="transition-delay: 150ms;">
+                        <h3 class="text-2xl font-bold text-secondary mb-3">Agile Project Leadership</h3>
+                        <p class="text-gray-600">I lead development teams using Scrum to deliver continuous value. I manage the product backlog, remove impediments, and coach the team to meet deadlines and exceed expectations.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-primary hover:shadow-2xl transition-all duration-300 fade-in-section hover:-translate-y-2" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold text-secondary mb-3">AI-Powered Delivery</h3>
+                        <p class="text-gray-600">I manage the implementation of complex technical solutions, leveraging AI-powered tools for process automation, data analysis, and to accelerate delivery, ensuring smarter outcomes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-secondary tracking-tighter">Featured Projects</h2>
+                    <p class="text-lg text-gray-600 mt-4">Evidence of my work: strategy, analysis, and execution on high-impact projects.</p>
+                </div>
+                <div class="space-y-20">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center fade-in-section">
+                        <div>
+                            <span class="text-sm font-bold text-primary uppercase tracking-wider">Digital Banking</span>
+                            <h3 class="text-3xl font-bold text-secondary mt-2 mb-4">Online Credit System Analysis & Design</h3>
+                            <p class="text-gray-600 leading-relaxed">I led the analysis and design for a new online credit platform. I created the customer evaluation flow, risk analysis framework, and technical roadmap, presenting a solution that drastically reduced time-to-market.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-2xl border border-gray-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-primary/20">
+                            <div class="text-center border-b border-gray-200 pb-4 mb-6">
+                                <h3 class="text-xl font-bold text-secondary">Online Credit System Design Flow</h3>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="flex items-center fade-in-section" style="transition-delay: 100ms;">
+                                    <div class="flex-shrink-0 flex justify-center items-center h-12 w-12 bg-primary/10 rounded-full">
+                                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-semibold text-secondary">Customer & Risk Analysis</h4>
+                                        <p class="text-sm text-gray-500">Defined the customer journey and risk scoring model.</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow"></div>
+                                <div class="flex items-center fade-in-section" style="transition-delay: 300ms;">
+                                    <div class="flex-shrink-0 flex justify-center items-center h-12 w-12 bg-primary/10 rounded-full">
+                                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V7.618a1 1 0 01.553-.894L9 4m0 16v-8m0 8l5.447-2.724A1 1 0 0015 16.382V7.618a1 1 0 00-.553-.894L9 4m0 0l6 3m-6-3l-6 3m12 5v8m-6-8v8m-6-8v8"></path></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-semibold text-secondary">Architecture & Implementation Plan</h4>
+                                        <p class="text-sm text-gray-500">Designed the system architecture and a phased plan.</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow"></div>
+                                <div class="flex items-center fade-in-section" style="transition-delay: 500ms;">
+                                    <div class="flex-shrink-0 flex justify-center items-center h-12 w-12 bg-accent/10 rounded-full">
+                                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-semibold text-secondary">High-Velocity Outcome</h4>
+                                        <p class="text-sm text-gray-500">The design drastically reduces product Time-to-Market.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center fade-in-section">
+                        <div class="md:order-2">
+                            <span class="text-sm font-bold text-primary uppercase tracking-wider">Technical Architecture</span>
+                            <h3 class="text-3xl font-bold text-secondary mt-2 mb-4">Microservices Architecture Development</h3>
+                            <p class="text-gray-600 leading-relaxed">I managed the development of an information-loading system based on microservices and APIs, ensuring the solution was scalable, secure, and seamlessly integrated with the core banking system.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-2xl border border-gray-200 md:order-1 transition-all duration-300 hover:-translate-y-2 hover:shadow-primary/20">
+                            <div class="text-center border-b border-gray-200 pb-4 mb-6">
+                                <h3 class="text-xl font-bold text-secondary">Microservices Architecture Flow</h3>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="flex items-center fade-in-section" style="transition-delay: 100ms;">
+                                    <div class="flex-shrink-0 flex justify-center items-center h-12 w-12 bg-primary/10 rounded-full">
+                                        <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-semibold text-secondary">API-First Microservice Design</h4>
+                                        <p class="text-sm text-gray-500">Designed a modular system for an info-loading platform.</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow"></div>
+                                <div class="flex items-center fade-in-section" style="transition-delay: 300ms;">
+                                    <div class="flex-shrink-0 flex justify-center items-center h-12 w-12 bg-primary/10 rounded-full">
+                                        <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-semibold text-secondary">Core System & API Integration</h4>
+                                        <p class="text-sm text-gray-500">Guaranteed seamless, secure data flow to the core.</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow"></div>
+                                <div class="flex items-center fade-in-section" style="transition-delay: 500ms;">
+                                    <div class="flex-shrink-0 flex justify-center items-center h-12 w-12 bg-accent/10 rounded-full">
+                                        <svg class="w-6 h-6 text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286z" /></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-semibold text-secondary">Scalable & Secure Deployment</h4>
+                                        <p class="text-sm text-gray-500">Resulted in a highly scalable and secure solution.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- TERCER PROYECTO AÑADIDO -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center fade-in-section">
+                        <div>
+                            <span class="text-sm font-bold text-primary uppercase tracking-wider">Cybersecurity & Operations</span>
+                            <h3 class="text-3xl font-bold text-secondary mt-2 mb-4">SOC/NOC Operations Center Design</h3>
+                            <p class="text-gray-600 leading-relaxed">I designed the integrated workflow for a Security & Network Operations Center, ensuring 24/7 availability, proactive threat monitoring, and rapid incident response for critical banking infrastructure.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-2xl border border-gray-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-primary/20">
+                            <div class="text-center border-b border-gray-200 pb-4 mb-6">
+                                <h3 class="text-xl font-bold text-secondary">Integrated Operations Flow</h3>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="flex items-center fade-in-section" style="transition-delay: 100ms;">
+                                    <div class="flex-shrink-0 flex justify-center items-center h-12 w-12 bg-primary/10 rounded-full">
+                                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-semibold text-secondary">Proactive Monitoring (SOC/NOC)</h4>
+                                        <p class="text-sm text-gray-500">Unified security and network event monitoring.</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow"></div>
+                                <div class="flex items-center fade-in-section" style="transition-delay: 300ms;">
+                                    <div class="flex-shrink-0 flex justify-center items-center h-12 w-12 bg-primary/10 rounded-full">
+                                       <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-semibold text-secondary">Integrated Analysis & Detection</h4>
+                                        <p class="text-sm text-gray-500">Correlated data using SIEM and automated tools.</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow"></div>
+                                <div class="flex items-center fade-in-section" style="transition-delay: 500ms;">
+                                    <div class="flex-shrink-0 flex justify-center items-center h-12 w-12 bg-accent/10 rounded-full">
+                                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-semibold text-secondary">Rapid Response & Remediation</h4>
+                                        <p class="text-sm text-gray-500">Managed incident tickets to ensure uptime and security.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- Toolkit Section - INICIO DE LA SECCIÓN MODIFICADA -->
+        <!-- ================================================================= -->
+        <section id="toolkit" class="py-20 md:py-28 bg-light-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-secondary tracking-tighter">My Professional Toolkit</h2>
+                    <p class="text-lg text-gray-600 mt-4">The skills, tools, and credentials I use to drive project success.</p>
+                </div>
+                <!-- MODIFICADO: Se mantiene el grid pero las tarjetas ahora se estirarán a la misma altura -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- MODIFICADO: Se añade h-full y efectos de transición/hover -->
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 fade-in-section h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                        <h3 class="text-2xl font-bold text-secondary mb-6">Key Skills</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Project Management</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Product Strategy</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Agile Leadership</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Technical Analysis</li>
+                             <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Risk Management</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Data-Driven Decisions</li>
+                        </ul>
+                    </div>
+                    <!-- MODIFICADO: Se añade h-full, efectos de transición/hover y se ajusta el espaciado interno a space-y-3 -->
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 fade-in-section h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-lg" style="transition-delay: 150ms;">
+                        <h3 class="text-2xl font-bold text-secondary mb-6">Tools I Master</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-semibold text-gray-500 text-sm mb-3 uppercase tracking-wider">Project Management</h4>
+                                <div class="flex flex-wrap gap-4 items-center">
+                                    <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="Jira" class="h-8" title="Jira">
+                                    <img src="https://i.imgur.com/jtkwMtY.png" alt="ClickUp" class="h-8 object-contain" title="ClickUp">
+                                </div>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-gray-500 text-sm mb-3 uppercase tracking-wider">Collaboration</h4>
+                                <div class="flex flex-wrap gap-4 items-center">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" alt="Slack" class="h-7" title="Slack">
+                                    <img src="https://i.imgur.com/Tk22Imb.png" alt="Microsoft Teams" class="h-7" title="Microsoft Teams">
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-500 text-sm mb-3 uppercase tracking-wider">Technical & AI</h4>
+                                <div class="flex flex-wrap gap-4 items-center">
+                                    <img src="https://i.imgur.com/xfSdxPW.png" alt="Pentaho" class="h-7" title="Pentaho Data Integration">
+                                    <svg class="h-8 w-8 text-gray-500" title="AI Tools (ChatGPT, Gemini)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" /></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODIFICADO: Se añade h-full y efectos de transición/hover -->
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 fade-in-section h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-lg" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold text-secondary mb-6">Verified Credentials</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="https://www.credly.com/users/freddy-arevalo/badges" target="_blank" class="flex items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Certified" class="h-8 object-contain" title="Google Project Management Certified"></a>
+                            <a href="https://www.credly.com/users/freddy-arevalo/badges" target="_blank" class="flex items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"><img src="https://i.imgur.com/j7Zjv28.png" alt="Scrum Certified" class="h-12 object-contain" title="Scrum Foundation Professional Certificate"></a>
+                            <a href="https://www.credly.com/users/freddy-arevalo/badges" target="_blank" class="flex items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM Certified" class="h-10 object-contain" title="IBM Data Analyst"></a>
+                            <a href="https://www.credly.com/users/freddy-arevalo/badges" target="_blank" class="flex items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"><img src="https://i.imgur.com/3VblooA.png" alt="Cisco Certified" class="h-10 object-contain" title="Cisco Cybersecurity"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ================================================================= -->
+        <!-- Toolkit Section - FIN DE LA SECCIÓN MODIFICADA -->
+        <!-- ================================================================= -->
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-secondary tracking-tighter">What My Clients Say</h2>
+                    <p class="text-lg text-gray-600 mt-4">Building strong partnerships is the foundation of my work.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-light-bg p-8 rounded-xl shadow-lg fade-in-section">
+                        <p class="text-gray-800 italic">"Freddy transformed our project management process. His strategic vision and technical expertise were invaluable in launching our Fintech app ahead of schedule."</p>
+                        <div class="mt-4 flex items-center">
+                            <div class="ml-4">
+                                <p class="font-bold text-secondary">John Doe</p>
+                                <p class="text-sm text-gray-500">CEO, Tech Startup</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light-bg p-8 rounded-xl shadow-lg fade-in-section" style="transition-delay: 150ms;">
+                        <p class="text-gray-800 italic">"Working with Freddy was a game-changer. He not only managed the project flawlessly but also coached our team on Agile best practices, improving our efficiency by 20%."</p>
+                        <div class="mt-4 flex items-center">
+                            <div class="ml-4">
+                                <p class="font-bold text-secondary">Jane Smith</p>
+                                <p class="text-sm text-gray-500">Head of Digital, National Bank</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light-bg p-8 rounded-xl shadow-lg fade-in-section" style="transition-delay: 300ms;">
+                        <p class="text-gray-800 italic">"His ability to translate complex business needs into a clear technical roadmap is exceptional. I highly recommend Freddy for any complex digital project."</p>
+                        <div class="mt-4 flex items-center">
+                            <div class="ml-4">
+                                <p class="font-bold text-secondary">Sam Wilson</p>
+                                <p class="text-sm text-gray-500">Product Owner, SaaS Company</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-4xl mx-auto p-12 md:p-16 rounded-2xl shadow-2xl transition-all duration-300 hover:-translate-y-1 fade-in-section" 
+                     style="background: radial-gradient(ellipse at 50% 40%, rgba(88, 81, 219, 0.25) 0%, rgba(17, 19, 36, 0) 50%), #111324;">
+                    
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tighter mb-4" style="color: #FFFFFF;">Ready to Build Your Next Big Project?</h2>
+                    <p class="text-lg max-w-2xl mx-auto mb-8" style="color: #A8AABC;">My blend of strategic vision and technical management is the key to taking your ideas from concept to launch. Let's talk.</p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="mailto:simply.proyects@gmail.com?subject=Project Inquiry from your Website" 
+                           class="bg-white text-[#111324] px-6 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:bg-[#F0F0F5] hover:-translate-y-0.5 active:scale-95">
+                            Send me an Email
+                        </a>
+                        <a href="https://www.linkedin.com/in/freddy-arevalo-276710120/" target="_blank" 
+                           class="bg-[#2A2D42] text-[#EAEAF2] px-6 py-3 rounded-lg text-lg font-semibold border border-[#3A3D52] transition-all duration-300 transform hover:bg-[#3A3D52] hover:border-[#4A4D62] hover:-translate-y-0.5 active:scale-95 active:bg-[#3A3D52]">
+                            Connect on LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light-bg py-8 border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center text-gray-600">
+            <p>&copy; <span id="year"></span> Freddy Arevalo. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="https://www.upwork.com/freelancers/~017e4ee42f1f86130a" target="_blank" class="hover:text-primary transition">Upwork</a>
+                <a href="https://www.credly.com/users/freddy-arevalo/badges" target="_blank" class="hover:text-primary transition">Credly</a>
+                <a href="#" target="_blank" class="hover:text-primary transition">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script for mobile menu
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Script for current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Script for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
